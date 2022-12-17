@@ -1,0 +1,51 @@
+.flex {
+  display: flex;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+$spacingsValue: (
+  "xs": .25rem, "sm": .5rem, "md": 1rem, "lg": 1.5rem, "xl": 3rem,
+);
+
+@each $name, $value in $spacingsValue {
+  .ml-#{$name} {
+    margin-left: $value;
+  }
+  .mr-#{$name} {
+    margin-right: $value;
+  }
+  .mt-#{$name} {
+    margin-top: $value;
+  }
+  .mb-#{$name} {
+    margin-bottom: $value;
+  }
+  .ma-#{$name} {
+    margin: $value;
+  }
+}
