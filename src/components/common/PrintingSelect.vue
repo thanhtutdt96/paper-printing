@@ -1,11 +1,7 @@
 <template>
   <div class="flex column mb-lg">
     <label for="paper-select" class="text-sm mb-sm text-medium">Select paper size</label>
-    <select
-      :value="modelValue"
-      name="paper-select"
-      @change="emits('update:modelValue', $event.target.value)"
-    >
+    <select :value="modelValue" name="paper-select" @change="onSelectChange">
       <option v-for="size in paperSizeOptions" :key="size.value" :value="size.value">
         {{ size.label }}
       </option>
@@ -25,7 +21,7 @@ defineProps<{
 }>();
 
 const emits = defineEmits<{
-  (event: 'update:modelValue', value: PaperSize): void;
+  (event: 'update:modelValue', value?: PaperSize): void;
   (event: 'apply'): void;
 }>();
 
@@ -47,6 +43,10 @@ const paperSizeOptions = [
     value: PaperSize.B5,
   },
 ];
+
+const onSelectChange = (event: Event) => {
+  emits('update:modelValue', (event.target as HTMLInputElement)?.value as PaperSize);
+};
 </script>
 
 <style lang="scss" scoped>
