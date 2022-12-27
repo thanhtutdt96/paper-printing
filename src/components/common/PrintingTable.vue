@@ -5,7 +5,17 @@
 
   <template v-else-if="displayPriceData?.length > 0">
     <table class="printing-table__table mb-md">
+      <tr>
+        <th></th>
+        <th v-for="day in 5" :key="day" class="printing-table__column-header" scope="col">
+          Day {{ day }}
+        </th>
+      </tr>
       <tr v-for="(priceList, index) in displayPriceData" :key="index">
+        <th scope="row" class="pa-sm">
+          Qty
+          <div>{{ priceList[0].quantity }}</div>
+        </th>
         <td
           v-for="(item, itemIndex) in priceList"
           :key="itemIndex"
@@ -15,8 +25,7 @@
           }"
           @click="onItemClick(item.price)"
         >
-          <div>Day: {{ item.business_day }}</div>
-          <div>Qty: {{ item.quantity }}</div>
+          <div>Price: &#165;{{ commaHandler(item.price) }}</div>
         </td>
       </tr>
     </table>
@@ -98,8 +107,8 @@ watch(
 
   td {
     cursor: pointer;
-    padding: 0.75rem;
-    min-width: 3.5rem;
+    padding: 0.5rem;
+    min-width: 4.5rem;
 
     &:hover,
     &.printing-table__item--selected {
@@ -124,6 +133,9 @@ watch(
       height: 10000px;
       width: 100%;
     }
+  }
+  .printing-table__column-header {
+    width: 4.5rem;
   }
 }
 </style>

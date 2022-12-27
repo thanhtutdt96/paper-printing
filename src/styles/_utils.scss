@@ -48,4 +48,19 @@ $spacingsValue: (
   .ma-#{$name} {
     margin: $value;
   }
+  .pl-#{$name} {
+    padding-left: $value;
+  }
+  .pr-#{$name} {
+    padding-right: $value;
+  }
+  .pt-#{$name} {
+    padding-top: $value;
+  }
+  .pb-#{$name} {
+    padding-bottom: $value;
+  }
+  .pa-#{$name} {
+    padding: $value;
+  }
 }
